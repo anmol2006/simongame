@@ -81,7 +81,7 @@ function checkAnswer(currentLevel) {
     setTimeout(function() {
       $("body").removeClass("game-over");
     }, 200);
-    $("#level-title").text("Game Over! Press any key (or tap) to restart");
+    $("#level-title").text("Game Over! Press any keyboard key or tap anywhere on the screen (except the buttons) to restart");
     $("#level-title").after("<h3 class='heading-style score'> Score: " + (gamePattern.length - 1) + "</h3>");
     setTimeout(startOver,500);
   }
