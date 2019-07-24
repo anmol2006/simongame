@@ -20,12 +20,13 @@ function nextSequence() {
 
 //Handling user click
 
-$("div.btn").click(function() {
+$("div.btn").click(function(e) {
   var userChosenColour = this.id;
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
   animatePress(userChosenColour);
   checkAnswer((userClickedPattern.length) - 1);
+  e.stopPropagation();  //To prevent bubbling towards top and interfering with whole document click
 });
 
 //Function To Play Sound
@@ -54,6 +55,16 @@ $(document).keydown(function() {
   }
 });
 
+//Only first Mouse click starts game
+$(document).click(function(e) {
+  if (started == false) {
+    setTimeout(nextSequence, 300);
+    started = true;
+    $("h3").remove();
+  }
+});
+
+
 //Function to Check User Answer
 
 function checkAnswer(currentLevel) {
@@ -70,9 +81,9 @@ function checkAnswer(currentLevel) {
     setTimeout(function() {
       $("body").removeClass("game-over");
     }, 200);
-    $("#level-title").text("Game Over! Press any key to restart");
+    $("#level-title").text("Game Over! Press any key (or tap) to restart");
     $("#level-title").after("<h3 class='heading-style score'> Score: " + (gamePattern.length - 1) + "</h3>");
-    startOver();
+    setTimeout(startOver,500);
   }
 }
 
