@@ -56,7 +56,7 @@ $(document).keydown(function() {
 });
 
 //Only first Mouse click starts game
-$(document).click(function(e) {
+$(document.body).click(function(e) {
   if (started == false) {
     setTimeout(nextSequence, 300);
     started = true;

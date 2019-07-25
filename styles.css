@@ -2,6 +2,7 @@ body {
   text-align: center;
   background-color: #011F3F;
   line-height: 1.5;
+  cursor: pointer;
 }
 
 .heading-style {
@@ -46,7 +47,6 @@ p{
   width: 200px;
   border: 10px solid black;
   border-radius: 20%;
-  cursor: pointer;
 }
 
 .game-over {
